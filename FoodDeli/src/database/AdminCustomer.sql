@@ -1,16 +1,16 @@
-INSERT INTO fooddeli.admin (AdminID, Password, Email, Username)
+INSERT INTO fooddeli.admins (AdminID, Passwrd, Email, Username)
 VALUES ('01', '1452', 'admin@gmail.com', 'admin1');
 
-INSERT INTO fooddeli.admin (AdminID, Password, Email, Username)
+INSERT INTO fooddeli.admins (AdminID, Passwrd, Email, Username)
 VALUES ('02', '1452', 'admin2@gmail.com', 'admin2');
 
-INSERT INTO fooddeli.admin(AdminID, Password, Email, Username)
+INSERT INTO fooddeli.admins(AdminID, Passwrd, Email, Username)
 VALUES ('03', '1452', 'admin3@gmail.com', 'admin3');
 
-INSERT INTO fooddeli.admin (AdminID, Password, Email, Username)
+INSERT INTO fooddeli.admins (AdminID, Passwrd, Email, Username)
 VALUES ('04', '1452', 'admin4@gmail.com', 'admin4');
 
-INSERT INTO fooddeli.admin (AdminID, Password, Email, Username)
+INSERT INTO fooddeli.admins (AdminID, Passwrd, Email, Username)
 VALUES ('05', '1452', 'admin5@gmail.com', 'admin5');
 
 

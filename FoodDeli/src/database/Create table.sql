@@ -1,97 +1,89 @@
 create database FoodDeli; 
 use FoodDeli; 
 CREATE TABLE Customer (
-    CustomerID int NOT NULL AUTO_INCREMENT,
-    FullName varchar(25),
-    Password varchar(25),
-    Email varchar(25),
-    Username varchar(25),
-    Address varchar(25),
-    PRIMARY KEY (CustomerID)
-);
-
-CREATE TABLE Orders (
-    OrderID int NOT NULL  AUTO_INCREMENT,
-    Status varchar(25),
-    TotalPrice decimal(18,0),
-    CustomerID int,
-    PRIMARY KEY (OrderID),
-    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID)
-);
-
-CREATE TABLE OrderDetails (
-    OrdersDetailsID int NOT NULL  AUTO_INCREMENT,
-    Amount int NOT NULL,
-    OrderID int,
-    PRIMARY KEY (OrdersDetailsID),
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
-);
-CREATE TABLE MenuType (
-    TypeID int NOT NULL,
-    FoodType varchar(25),
-    PRIMARY KEY (TypeID)
-);
-CREATE TABLE Admin (
-    AdminID int NOT NULL AUTO_INCREMENT,
-    Password varchar(25),
-    Email varchar(25),
-    Username varchar(25),
-    PRIMARY KEY (AdminID)
-);
-CREATE TABLE Restaurant (
-    RestaurantID int NOT NULL AUTO_INCREMENT,
-    Address varchar(50),
-    Contact_no int,
-    Name varchar(50),
-    AdminID int,
-    PRIMARY KEY (RestaurantID),
-    FOREIGN KEY (AdminID) REFERENCES Admin(AdminID)
-);
-CREATE TABLE Food (
-    FoodID int NOT NULL  AUTO_INCREMENT,
-    Name varchar(25),
-    Image varbinary(50),
-    Price decimal(18,0),
-    OrdersDetailsID int, 
-    TypeID int,
-    RestaurantID int,
-    PRIMARY KEY (FoodID),
-    FOREIGN KEY (OrdersDetailsID) REFERENCES OrderDetails(OrdersDetailsID),
-    FOREIGN KEY (TypeID) REFERENCES MenuType(TypeID),
-    FOREIGN KEY (RestaurantID) REFERENCES Restaurant(RestaurantID)
+    customerID int NOT NULL AUTO_INCREMENT,
+    fullName varchar(25),
+    passwrd varchar(25),
+    email varchar(25),
+    username varchar(25),
+    address varchar(25),
+    PRIMARY KEY (customerID)
 );
 CREATE TABLE Driver (
-    DriverID int NOT NULL  AUTO_INCREMENT,
-    FullName varchar(25),
-    Contact_no int,
-    License_no varchar(25),
-    OrderID int,
-    PRIMARY KEY (DriverID),
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID)
+    driverID int NOT NULL  AUTO_INCREMENT,
+    fullName varchar(25),
+    fontact_no int,
+    license_no varchar(25),
+    PRIMARY KEY (driverID)
+);
+CREATE TABLE Orders (
+    orderID int NOT NULL  AUTO_INCREMENT,
+    ordStatus varchar(25),
+    totalPrice decimal(18,0),
+    amount int NOT NULL,
+    customerID int,
+    driverID int, 
+    PRIMARY KEY (orderID),
+    FOREIGN KEY (customerID) REFERENCES Customer(customerID),
+    FOREIGN KEY(driverID) REFERENCES Driver(driverID)
+);
+CREATE TABLE MenuType (
+    typeID int NOT NULL,
+    foodType varchar(25),
+    PRIMARY KEY (typeID)
+);
+CREATE TABLE admins (
+    adminID int NOT NULL AUTO_INCREMENT,
+    passwrd varchar(25),
+    email varchar(25),
+    username varchar(25),
+    PRIMARY KEY (adminID)
+);
+CREATE TABLE Restaurant (
+    restaurantID int NOT NULL AUTO_INCREMENT,
+    address varchar(50),
+    contact_no int,
+    restName varchar(50),
+    adminID int,
+    PRIMARY KEY (restaurantID),
+    FOREIGN KEY (adminID) REFERENCES adminis(adminID)
+);
+CREATE TABLE Food (
+    foodID int NOT NULL  AUTO_INCREMENT,
+    foodName varchar(25),
+    image varchar(1000),
+    price decimal(18,0),
+    orderID int, 
+    typeID int,
+    restaurantID int,
+    PRIMARY KEY (foodID),
+    FOREIGN KEY (orderID) REFERENCES Orders(orderID),
+    FOREIGN KEY (typeID) REFERENCES MenuType(typeID),
+    FOREIGN KEY (restaurantID) REFERENCES Restaurant(restaurantID)
 );
 CREATE TABLE Payment (
-    PaymentID int NOT NULL,
-    Payment_type varchar(25),
-    PRIMARY KEY (PaymentID)
+    paymentID int NOT NULL,
+    payment_type varchar(25),
+    PRIMARY KEY (paymentID)
 );
 CREATE TABLE Transactions (
-    TransactionsID int NOT NULL AUTO_INCREMENT,
-    RestaurantID int,
-    PaymentID int, 
-    CustomerID int, 
-    DriverID int, 
-    PRIMARY KEY (TransactionsID),
-    FOREIGN KEY (RestaurantID) REFERENCES Restaurant(RestaurantID),
-    FOREIGN KEY (PaymentID) REFERENCES Payment(PaymentID),
-    FOREIGN KEY (CustomerID) REFERENCES Customer(CustomerID),
-    FOREIGN KEY (DriverID) REFERENCES Driver(DriverID)
+    transactionsID int NOT NULL AUTO_INCREMENT,
+    restaurantID int,
+    paymentID int, 
+    customerID int, 
+    driverID int, 
+    PRIMARY KEY (transactionsID),
+    FOREIGN KEY (restaurantID) REFERENCES Restaurant(restaurantID),
+    FOREIGN KEY (paymentID) REFERENCES Payment(paymentID),
+    FOREIGN KEY (customerID) REFERENCES Customer(customerID),
+    FOREIGN KEY (driverID) REFERENCES Driver(driverID)
 );
 CREATE TABLE Has (
-    Date date,
-    OrderID int, 
-    TransactionsID int, 
-    FOREIGN KEY (OrderID) REFERENCES Orders(OrderID),
-    FOREIGN KEY (TransactionsID) REFERENCES Transactions(TransactionsID)
+    timeOrder date,
+    orderID int, 
+    transactionsID int , 
+    FOREIGN KEY (orderID) REFERENCES Orders(orderID),
+    FOREIGN KEY (transactionsID) REFERENCES Transactions(transactionsID)
 );
 
 

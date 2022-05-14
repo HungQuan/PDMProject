@@ -16,6 +16,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import util.DBConnection;
 
 /**
  *
@@ -38,9 +39,9 @@ public class RegistrationServlet extends HttpServlet {
         PrintWriter out = response.getWriter(); 
          try{
             
-            Class.forName("com.mysql.cj.jdbc.Driver"); 
-             con = DriverManager.getConnection("jdbc:mysql://localhost:3306/fooddeli?ueSSL=false","root","quan0507");
-            PreparedStatement pst = con.prepareStatement("insert into fooddeli.customer(fullname,email,address,password,username) values(?,?,?,?,?)"); 
+           
+            con = DBConnection.getConnection(); 
+            PreparedStatement pst = con.prepareStatement("insert into fooddeli.customer(fullname,email,address,passwrd,username) values(?,?,?,?,?)"); 
             pst.setString(1, fullname);
             pst.setString(2,email); 
             pst.setString(3,address); 

@@ -9,14 +9,25 @@ package model;
  * @author Quan Truong
  */
 public class Customer {
+    private int id; 
     private String email; 
     private String password; 
-    public Customer(){
-        
+    private String fullName; 
+    private String username; 
+    private String address; 
+    public Customer(){    
     }
     public Customer(String email, String password){
         this.email= email; 
         this.password = password; 
+    }
+    public Customer( String fullname, String password, String email, String username, String address){
+       
+        this.fullName = fullname; 
+        this.password =password; 
+        this.email = email; 
+        this.username = username; 
+        this.address = address; 
     }
     public String getEmail(){
         return email;
@@ -24,6 +35,39 @@ public class Customer {
     public void setEmail(String email){
         this.email = email;  
     }
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public String getFullName() {
+        return fullName;
+    }
+
+    public void setFullName(String fullName) {
+        this.fullName = fullName;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+    
     public String getPassword(){
         return password; 
     }
