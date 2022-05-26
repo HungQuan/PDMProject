@@ -32,7 +32,7 @@
                 <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
                 <div class="container">
-                    <h3 class="text-center">List of Foods Available</h3>
+                    <h3 class="text-center">Order #1</h3>
                     <hr> 
                     <br>
                     <table class="table table-bordered">
@@ -40,13 +40,12 @@
                                 <th  >ID</th>
                                 <th  >Name</th>
                                 <th  >Price</th>
-                                
-                               
+
                             </tr>  
                          <% try
                          {
                             
-                            String query="SELECT * from food as f where ordersID = 1; "; 
+                            String query="SELECT * from food as f where orderID = 1; "; 
                             Connection conn= DBConnection.getConnection(); 
                             Statement stmt=conn.createStatement();
                             ResultSet rs=stmt.executeQuery(query);
@@ -54,9 +53,8 @@
                             %>
                             <tr>
                             <th scope="col"><%=rs.getInt("FoodID") %></th>
-                            <th scope="col"><%=rs.getString("name") %></th>
+                            <th scope="col"><%=rs.getString("foodName") %></th>
                             <th scope="col"><%=rs.getString("Price") %></th>
-                           
                             </tr>
                             <%
                              }

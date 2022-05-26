@@ -15,25 +15,20 @@ import model.Food;
 import util.DBConnection;
 
 public class FoodDAO {
-    private final String jdbcURL = "jdbc:mysql://localhost:3306/fooddeli?useSSL=false";
-    private final String jdbcUsername = "root";
-    private final String jdbcPassword = "quan0507";
     
-    private static final String UPDATE_FOOD_INTO_ORDERS = "update food set OrdersID = ? where foodID = ?;"; 
-    private static final  String SELECT_ALL_FOOD ="SELECT * FROM menutype as m ,food as f where m.TypeID=f.TypeID; "; 
+    private static final String UPDATE_FOOD_INTO_ORDERS = "update food set orderID = ? where foodID = ?;"; 
+    private static final  String SELECT_ALL_FOOD ="SELECT foodID ,foodName,image,price,foodType FROM food as f, menutype as m where m.typeID=f.typeID ORDER BY foodID ASC ; "; 
      //private static final String INSERT_AMOUNT_AND_TOTALPRICE_INTO_ORDERS = "insert into orders(OrderID, Amount, TotalPrice) values (?, ?,  @count := ?*(select price from food where TypeID = ? LIMIT 1)); "; 
      //private static final String SELECT_ALL_FOOD = "SELECT foodID,name,price where OrderID = ?"; 
      //private static final String DELETE_FOOD = "DELETE FROM food WHERE OrderID= ? "; 
    
-    
-    
-  
-     public void addFood(Food food) throws SQLException {
+ 
+     public void addFood(int orderId, int id) throws SQLException {
         System.out.println(UPDATE_FOOD_INTO_ORDERS);
         // try-with-resource statement will auto close the connection.
         try (Connection connection = DBConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(UPDATE_FOOD_INTO_ORDERS)) {
-           preparedStatement.setInt(1, food.getOrderId());
-           preparedStatement.setInt(2, food.getId());
+           preparedStatement.setInt(1, orderId);
+           preparedStatement.setInt(2,id);
            System.out.println(preparedStatement);
            preparedStatement.executeUpdate();
         } catch (SQLException e) {
@@ -53,7 +48,8 @@ public class FoodDAO {
 
             // Step 4: Process the ResultSet object.
             while (rs.next()) {
-                 
+                Food food = new Food(rs.getInt("foodID"),rs.getString("foodName"),rs.getString("Image"),rs.getString("price"),rs.getString("foodType")); 
+                list.add(food);
             }
         } catch (SQLException e) {
             printSQLException(e);
