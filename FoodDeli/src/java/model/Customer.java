@@ -15,20 +15,14 @@ public class Customer {
     private String fullName; 
     private String username; 
     private String address; 
-    public Customer(){}
+    public Customer(){    
+    }
     public Customer(String email, String password){
-        this.email = email; 
+        this.email= email; 
         this.password = password; 
     }
-    public Customer(String fullName, String password, String email, String username, String address){
-        this.fullName= fullName; 
-        this.password = password; 
-        this.email =email; 
-        this.username = username; 
-        this.address = address; 
-    }
-    public Customer( int id, String fullname, String password, String email, String username, String address){
-        this.id = id; 
+    public Customer( String fullname, String password, String email, String username, String address){
+       
         this.fullName = fullname; 
         this.password =password; 
         this.email = email; 

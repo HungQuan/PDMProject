@@ -23,14 +23,14 @@
     <nav class="navbar">
         <a class="active" href="./home.html">Home</a>
         <a href="#" onclick="openAbout()">about</a>
-        <a href="./contact.jsp" >Contact us</a>
+        <a href="./contact.html" >Contact us</a>
     </nav>
     <div class="icons">
          <i class="fas fa-bars" id="menu-bars"></i>
         <i class="fas fa-search" id="search-icon"></i>
-        <a href="Order.jsp" class="fas fa-shopping-cart"></a>
-        <a  href="#" class="fa fa-user"></a>
-        <a href="LogoutServlet" class="fas fa-sign-in-alt"></a>
+        <a href="#" class="fas fa-shopping-cart"></a>
+        <i class="fa fa-user" aria-hidden="true"></i>
+         <a href="LogoutServlet" class="fas fa-sign-in-alt"></a>
     </div>
 </header>
   <!-- Header section ends-->
@@ -46,7 +46,7 @@
     <div class="add-container">
     <img src="./banner/burger banner.jpg">
     <div class="textimg"><h2>30% off on your<br> first order</h2>
-    <a href="food"><button class="ordr">Order Now</button></a></div>
+    <a href="restaurant1.jsp"><button class="ordr">Order Now</button></a></div>
     </div>
    </div>
    <!--Add ends-->
@@ -57,7 +57,7 @@
     <hr class="line"> 
     <div class="box-container">
     <div class="box">
-        <a href="food"><img src="./Restaurants/domino.png"></a>
+        <a href="./restaurant1.jsp"><img src="./Restaurants/barbeque.jpg"></a>
         <h3>Domino Pizza </h3>
         <div class="stars">
             <i class="fas fa-star"></i>

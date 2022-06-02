@@ -12,26 +12,28 @@ public class Food {
     
     protected int id; 
     protected String name; 
-    protected String price; 
+    protected double price; 
     protected int orderId; 
     protected String image; 
     protected String foodType; 
     
     public Food(){}
-    public Food(int orderId ,int id){
-        this.orderId = orderId; 
-        this.id =id; 
-    }
    
     
-    public Food(int id, String name, String image, String price, String foodType){
-       
+    public Food(int id, String name, double price, String image, String foodType){
+        super(); 
         this.id = id; 
         this.name = name; 
         this.price = price; 
         this.image = image; 
         this.foodType = foodType; 
     }
+     public Food( int id, int orderId){
+        super(); 
+        this.id =id;
+        this.orderId = orderId; 
+    }
+
     public int getId() {
         return id;
     }
@@ -40,7 +42,7 @@ public class Food {
         return name;
     }
 
-    public String getPrice() {
+    public double getPrice() {
         return price;
     }
 
@@ -48,22 +50,6 @@ public class Food {
         return orderId;
     }
 
-    public String getImage() {
-        return image;
-    }
-
-    public void setImage(String image) {
-        this.image = image;
-    }
-
-    public String getFoodType() {
-        return foodType;
-    }
-
-    public void setFoodType(String foodType) {
-        this.foodType = foodType;
-    }
-    
     public void setOrderId(int orderId) {
         this.orderId = orderId;
     }
@@ -75,7 +61,7 @@ public class Food {
         this.name = name;
     }
 
-    public void setPrice(String price) {
+    public void setPrice(double price) {
         this.price = price;
     }
     

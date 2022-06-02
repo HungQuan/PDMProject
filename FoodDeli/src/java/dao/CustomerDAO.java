@@ -23,16 +23,15 @@ public class CustomerDAO {
        private static final String SELECT_CUSTOMER_BY_ID = "select * from customer where CustomerID= ?"; 
        private static final String SELECT_ALL_CUSTOMER = "select * from customer";
        private static final String DELETE_CUSTOMER_SQL ="delete from customer where CustomerID= ?"; 
-       private static final String UPDATE_CUSTOMER_SQL = "update customer set fullname = ?, passwrd = ? , email= ?, username = ?, address =? where id = ?"; 
+       private static final String UPDATE_CUSTOMER_SQL = "update customer ser fullname = ?, passwrd = ? , email= ?, username = ?, address =? where id = ?"; 
        
    public void insertCustomer(Customer customer) throws SQLException{
        try (Connection connection = DBConnection.getConnection(); PreparedStatement preparedStatement = connection.prepareStatement(INSERT_CUSTOMER_SQL)) {
-            preparedStatement.setInt(1, customer.getId());
-            preparedStatement.setString(2, customer.getFullName());
-            preparedStatement.setString(3, customer.getPassword());
-            preparedStatement.setString(4, customer.getEmail());
-            preparedStatement.setString(5, customer.getUsername());
-            preparedStatement.setString(6, customer.getAddress());
+            preparedStatement.setString(1, customer.getFullName());
+            preparedStatement.setString(2, customer.getPassword());
+            preparedStatement.setString(3, customer.getEmail());
+            preparedStatement.setString(4, customer.getUsername());
+            preparedStatement.setString(5, customer.getAddress());
             System.out.println(preparedStatement);
             preparedStatement.executeUpdate();
         } catch (Exception e) {
@@ -49,13 +48,12 @@ public class CustomerDAO {
             ResultSet rs = preparedStatement.executeQuery();
                         // Step 4: Process the ResultSet object.
             while (rs.next()) {
-                id = rs.getInt("CustomerID");
-                String fullname = rs.getString("fullname");
-                String password = rs.getString("passwrd");
+                String fullname = rs.getString("name");
+                String password = rs.getString("password");
                 String email = rs.getString("email");
                 String username = rs.getString("username");
                 String address = rs.getString("address");
-                customer = new Customer(id,fullname,password,email,username,address); 
+                customer = new Customer(fullname,password,email,username,address); 
             }
         } catch (SQLException e) {
             printSQLException(e);
@@ -72,8 +70,8 @@ public class CustomerDAO {
            //Run the query in database 
             ResultSet rs = pst.executeQuery();
             while(rs.next()){
-                Customer customer = new Customer(rs.getInt(1),rs.getString(2),rs.getString(3),
-                rs.getString(4),rs.getString(5),rs.getString(6));
+                Customer customer = new Customer(rs.getString(1),rs.getString(2),
+                rs.getString(3),rs.getString(4),rs.getString(5));
                 customers.add(customer); 
             }
        }catch(SQLException e){
@@ -86,7 +84,6 @@ public class CustomerDAO {
         try (Connection connection = DBConnection.getConnection();
             // Step 2:Create a statement using connection object
             PreparedStatement statement = connection.prepareStatement(DELETE_CUSTOMER_SQL);) {
-            statement.setInt(1, id);
             rowDeleted = statement.executeUpdate() > 0;
         }
         return rowDeleted;

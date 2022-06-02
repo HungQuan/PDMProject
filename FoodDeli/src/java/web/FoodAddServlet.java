@@ -21,7 +21,7 @@ import model.Food;
  *
  * @author Quan Truong
  */
-@WebServlet(name = "Food", urlPatterns = {"/food","/add"})
+@WebServlet(name = "Food", urlPatterns = {"/food"})
 public class FoodAddServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
     private FoodDAO foodDAO; 
@@ -29,21 +29,22 @@ public class FoodAddServlet extends HttpServlet {
     public void init() {
         foodDAO = new FoodDAO();
     }
+    
  
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
             String action = request.getServletPath();
-
+            
         try {
             switch (action) {
                 case "/add":
                     addFood(request, response);
                     break;
-                default:
+                case "/list":
                     listFood(request, response);
-                    break;
-            }
+                    break;    
+                 }
         } catch (SQLException ex) {
             throw new ServletException(ex);
         }
@@ -55,21 +56,21 @@ public class FoodAddServlet extends HttpServlet {
     }
     private void addFood(HttpServletRequest request, HttpServletResponse response)
     throws SQLException, IOException, ServletException {
-        int id = Integer.parseInt(request.getParameter("id"));
-        int orderId = 1; 
-        foodDAO.addFood(orderId,id);
+        
+        Food food = new Food(2,1); 
+        foodDAO.addFood(food);
+        
         RequestDispatcher dispatcher = request.getRequestDispatcher("Order.jsp");
         dispatcher.forward(request, response);
     }
-    private void listFood(HttpServletRequest request, HttpServletResponse response)
+     private void listFood(HttpServletRequest request, HttpServletResponse response)
     throws  IOException, ServletException {
-        PrintWriter out = response.getWriter();
-        FoodDAO dao = new FoodDAO(); 
-        List<Food> list = dao.selectAllFood(); 
-        request.setAttribute("listFood", list);
-        request.getRequestDispatcher("restaurant1.jsp").forward(request, response);
-        out.print(list); 
+        List< Food > listFood = foodDAO.selectAllFood();
+        request.setAttribute("listFood", listFood);
+        RequestDispatcher dispatcher = request.getRequestDispatcher("restaurant1.jsp");
+        dispatcher.forward(request, response);
     }
+
 
     @Override
     public String getServletInfo() {
