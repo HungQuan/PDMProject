@@ -1,0 +1,258 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Flex:opsz,wght@8..144,100&display=swap');
+
+
+/*Header Styling*/
+#top{
+    color:rgba(245, 163, 10, 0.973);
+    text-align:left;
+    font-size:20px;
+    font-family: 'Roboto Flex', sans-serif;
+    margin-left: 20px;
+    display:inline;
+}
+#top_right{
+    color:black;
+    text-align:right;
+    font-size:20px;
+    font-family: 'Roboto Flex', sans-serif;
+    display: inline;
+}
+/* Navigation bar styling*/
+
+/*Navbar image styling*/
+#navbar img{
+    display:block;
+    width: 50px;
+    height:50px;
+    margin:auto;
+    margin-bottom: 3px;
+}
+
+/*Navbar Functionality*/
+#navbar{
+    display:flex;
+    flex-direction: column;
+    background-color:rgba(245, 163, 10, 0.973);
+    height: 5vh;
+    width: auto;
+    font-family: 'Roboto Flex', sans-serif;;
+    margin-right:  5px;
+   border: 2px solid black;
+}
+
+
+/*Navbar content functionality*/
+#navcontent{
+    display: inline-flex;
+    justify-content: center;
+}
+
+
+/*Navbar content styling*/
+ul li{
+    list-style: none;
+    text-align:center;
+    
+    border-radius: 20px;
+}
+ul li a{
+    padding: 5px;
+    color:black;
+    text-decoration: none;
+    border-radius:10px;
+}
+
+
+/* website background image designing */
+#container1{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100vw;
+    height:63vh;
+}
+
+/*Setting the background image using before pseudo selector*/ 
+#container1::before{
+    content:'';
+    background: url("./admin/background_banner.png") no-repeat center center/cover;
+    width: 100vw;
+    height:50vh;
+    position: absolute;
+    top:0px;
+    left: 0px;
+    font-family: 'Roboto Flex', sans-serif;;
+    margin-right: 100px;
+    z-index: -1;
+    border: 1px solid black;
+}
+
+#row1{
+   color: black;
+    font-weight:bold;
+    font-size: 2rem;
+    text-align: center;
+    margin-top: 35px;
+}
+/*Button Styling*/
+.bttn{
+    margin-top:10px;
+    border-radius:20px;
+    background-color:yellow;
+    font-size:20px;
+    font-weight: bold;
+    font-family: 'Roboto Flex', sans-serif;
+}
+.bttn:hover{
+    cursor: pointer;
+    background-color: red;
+}
+
+
+#container3{
+    display: flex;
+    justify-content: space-evenly;
+}
+#row2{
+    width:24vw;
+    height:21vh;
+    box-shadow: 2px 2px 2px 2px;
+     margin-top:51px;
+     margin-bottom: 51px;
+     display: flex;
+    justify-content: center;
+     align-items: flex-end;
+     position: relative;
+     margin-right: 38px;
+     border-radius: 40px;
+}
+#row2::before{
+    content: '';
+    background: url('./admin/customer_pic.png') no-repeat center center/cover;
+    position: absolute;
+    top: 0px;
+    left:0px;
+    width: 24vw;
+    height:21vh;
+    z-index: -1;
+    border-radius: 40px;
+}
+#row3{
+    position: relative;
+    width: 24vw;
+    height:21vh;
+    display: flex;
+    justify-content: center;
+     align-items: flex-end;
+     box-shadow: 2px 2px 2px 2px;
+     margin-top:51px;
+     margin-bottom: 51px;
+     
+     margin-left: 38px;
+     border-radius: 40px;
+}
+#row3::before{
+    content: '';
+    background: url('./admin/food_list.jpg') no-repeat center center/cover;
+    position: absolute;
+    top:0px;
+    left:0px;
+    width: 24vw;
+    height:21vh;
+    z-index: -1;
+    border-radius: 40px;
+}
+
+#top3{
+    text-align: center;
+    color:red;
+    font-family: 'Roboto Flex', sans-serif;
+}
+
+/*Designing the footer*/
+footer{
+    text-align: center;
+}
+/*Designing of Contact Us*/
+#ContactUs{
+    width:100vw;
+    height:100vh;
+    display:flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: gray;
+}
+.form-shape input, .form-shape select, .form-shape textarea{
+   width: 92%;
+   padding: 0.5rem;
+}
+/*Changing the color of placeholder*/
+::placeholder{                  
+    color:white;
+}
+/*Making the webpage responsive using media queries*/
+@media only screen and (max-width:1131px){
+    #row4{
+        width: 42vw;
+    }
+    #row5{
+        width:45vw;
+    }
+    #row6{
+        margin-top: 20px;
+        width:90vw;
+    }
+}
+@media only screen and (min-width:600px) and (max-width:781px)
+{
+    #row4{
+        width:84vw;
+        margin: auto;
+        margin-left: 22px;
+    }
+    #row5{
+        
+        width:84vw;
+        margin: auto;
+        margin-top: 20px;
+        margin-left: 22px;
+    }
+    #row6{
+        width:84vw;
+        margin: auto;
+        margin-top: 20px;
+        margin-left: 22px;
+    }
+}
+@media only screen and (max-width:600px){
+    #row4{
+        width:78vw;
+        margin: auto;
+        margin-left: 3px;
+    }
+    #row5{
+        
+        width:78vw;
+        margin: auto;
+        margin-top: 20px;
+        margin-left: 3px;
+    }
+    #row6{
+        width:78vw;
+        margin: auto;
+        margin-top: 20px;
+        margin-left: 3px;
+    }
+}
+@media only screen and (min-height:1000px){
+    #navbar{
+        height:10vh;
+    }
+    #container1::before{
+        height:39vh;
+    }
+    #container1{
+        height:44vh
+    }
+}
