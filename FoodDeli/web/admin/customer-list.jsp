@@ -15,10 +15,10 @@
             <header>
                 <nav class="navbar navbar-expand-md navbar-dark" style="background-color: green">
                     <div>
-                        <a href="home.jsp" class="navbar-brand"> Home</a>
+                        <a href="home_admin.jsp" class="navbar-brand"> Home </a>
                     </div>
                     <ul class="navbar-nav">
-                        <li><a> Domino Pizza </a></li>
+                        <li><a> User </a></li>
                     </ul>
                      
                 </nav>
@@ -28,20 +28,35 @@
                 <!-- <div class="alert alert-success" *ngIf='message'>{{message}}</div> -->
 
                 <div class="container">
-                    <h3 class="text-center">List User</h3>
+                     <div class="container text-left">
+
+                        <a href="newcustomer" class="btn btn-success">Add New Customer </a>
+                    </div>
+                    <br>
+                    <h3 class="text-center">List of User</h3>
                     <hr> 
                     <br>
                     <table class="table table-bordered">
                         <tr>
-                            <th>FullName</th>
+                            <th>ID</th>
+                            <th>Full Name</th>
                             <th>Password</th>
-                            <th>Email</th>
+                            <th>Username</th>
+                            <th>Email </th>
+                            <th>Address</th>
                 
                         </tr>
                             <c:forEach items="${listUser}" var= "x">
                                    <tr>
+                                        <td>${x.id}</td>
+                                        <td>${x.fullName}</td>
                                         <td>${x.password}</td>
-                                     </tr>
+                                        <td>${x.username}</td>
+                                        <td>${x.email}</td>
+                                        <td>${x.address}</td>
+                                        <td><a href="editcustomer?id=<c:out value='${x.id}' />">Edit</a> 
+                                        &nbsp;&nbsp;&nbsp;&nbsp; <a href="deletecustomer?id=<c:out value='${x.id}' />">Delete</a></td>
+                                    </tr>
                          </c:forEach>
                     </table>
                  </div>
