@@ -10,7 +10,7 @@ body{
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background-image: url(background.jpg);
+    background-image: url(./background.jpg);
     
     background-repeat: no-repeat;
     background-size: cover;
@@ -19,7 +19,7 @@ body{
 }
 
 body.active{
-    background-image: url(background.jpg);
+    background-image: url(./background.jpg);
 }
 .container{
     align-items: center;
